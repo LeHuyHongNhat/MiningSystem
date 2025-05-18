@@ -1,55 +1,29 @@
 # Data Mining System
 
-A comprehensive data mining system built with FastAPI, featuring advanced data preprocessing, multiple machine learning algorithms, and model explainability.
+A comprehensive data mining system with FastAPI backend and modern frontend interface, featuring advanced data preprocessing, multiple machine learning algorithms, and model explainability.
+
+## Demo
+
+[Watch the demo video](https://youtu.be/DEYaQRODdPg)
 
 ## Features
 
-### Data Preprocessing
+- **Data Preprocessing**
 
-- Missing value handling with KNN imputation
-- Outlier detection and treatment
-- Feature scaling and normalization
-- Categorical variable encoding
-- Feature selection and dimensionality reduction
-- Data quality analysis and visualization
+  - Missing value handling, outlier detection
+  - Feature scaling, encoding, and selection
+  - Data quality analysis and visualization
 
-### Machine Learning Algorithms
+- **Machine Learning**
 
-- Classification
-  - Random Forest
-  - XGBoost
-  - Support Vector Machine
-  - Neural Network
-- Regression
-  - Linear Regression
-  - Ridge Regression
-  - Lasso Regression
-  - Random Forest
-  - XGBoost
-  - Support Vector Regression
-  - Neural Network
-- Clustering
-  - K-means
-  - DBSCAN
-  - Hierarchical Clustering
+  - Classification: Random Forest, XGBoost, SVM, Neural Network
+  - Regression: Linear, Ridge, Lasso, Random Forest, XGBoost
+  - Clustering: K-means, DBSCAN, Hierarchical
 
-### Model Evaluation
-
-- Cross-validation
-- Multiple evaluation metrics
-- Hyperparameter optimization
-- Model comparison
-- SHAP-based model explanations
-
-### API Endpoints
-
-- `/upload` - Upload data files (CSV/Excel)
-- `/preprocess` - Preprocess data with configurable options
-- `/train` - Train models with specified configuration
-- `/models` - List available models
-- `/save-model` - Save trained models
-- `/load-model` - Load saved models
-- `/data-info` - Get dataset information
+- **Model Evaluation**
+  - Cross-validation and hyperparameter optimization
+  - Multiple evaluation metrics
+  - SHAP-based model explanations
 
 ## Installation
 
@@ -60,11 +34,16 @@ git clone <repository-url>
 cd data-mining-system
 ```
 
-2. Create a virtual environment:
+2. Create and activate virtual environment:
 
 ```bash
+# Windows
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+venv\Scripts\activate
+
+# Linux/Mac
+python -m venv venv
+source venv/bin/activate
 ```
 
 3. Install dependencies:
@@ -73,49 +52,33 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Usage
+## Running the Application
 
-1. Start the FastAPI server:
+### Backend
 
 ```bash
 uvicorn backend.main:app --reload
 ```
 
-2. Access the API documentation:
+Access API docs at: http://localhost:8000/docs
 
-- OpenAPI (Swagger) UI: http://localhost:8000/docs
-- ReDoc: http://localhost:8000/redoc
+### Frontend
 
-3. Example API calls:
-
-```python
-# Upload data
-import requests
-
-files = {'file': open('data.csv', 'rb')}
-response = requests.post('http://localhost:8000/upload', files=files)
-
-# Preprocess data
-preprocessing_config = {
-    "handle_missing": True,
-    "handle_outliers": True,
-    "scale_features": True,
-    "encode_categorical": True,
-    "feature_selection": True,
-    "n_features": 10
-}
-response = requests.post('http://localhost:8000/preprocess', json=preprocessing_config)
-
-# Train models
-training_config = {
-    "algorithm_type": "classification",
-    "selected_models": ["random_forest", "xgboost"],
-    "test_size": 0.2,
-    "random_state": 42,
-    "optimize_hyperparameters": True
-}
-response = requests.post('http://localhost:8000/train', json=training_config)
+```bash
+python frontend/app.py
 ```
+
+Access the application at: http://127.0.0.1:8050/
+
+## API Endpoints
+
+- `/upload` - Upload data files (CSV/Excel)
+- `/preprocess` - Preprocess data
+- `/train` - Train models
+- `/models` - List available models
+- `/save-model` - Save trained models
+- `/load-model` - Load saved models
+- `/data-info` - Get dataset information
 
 ## Project Structure
 
@@ -144,8 +107,6 @@ data-mining-system/
 - Joblib - Model persistence
 - Pydantic - Data validation
 - Python-jose - JWT tokens
-- Passlib - Password hashing
-- Bcrypt - Password hashing
 - Python-dotenv - Environment variables
 
 ## Contributing
